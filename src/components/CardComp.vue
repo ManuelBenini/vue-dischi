@@ -5,7 +5,7 @@
             <img :src="albumData.poster">
         </div>
 
-        <h4 class="my-2">{{albumData.title}}</h4>
+        <h6 class="my-3">{{albumData.title.toUpperCase()}}</h6>
         <p>{{albumData.author}}</p>
         <p>{{albumData.year}}</p>
     </div>
@@ -34,7 +34,7 @@ export default {
         img{
             width: 100%;
         }
-        h4{
+        h6{
             color: white;
         }
         p{
