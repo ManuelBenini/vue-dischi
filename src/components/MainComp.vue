@@ -1,11 +1,15 @@
 <template>
 
     <main>
-        <div class="container d-flex flex-wrap">
+        <div class="container d-flex flex-wrap" v-if="isApiLoaded">
             <CardComp :key="`album${index}`" 
                 v-for="(album, index) in albums"
                 :albumData="album"
             />
+        </div>
+
+        <div class="container d-flex flex-wrap" v-else>
+            <LoaderComp loadingMessage=" 'Il rock non eliminerà i tuoi problemi. Ma ti permetterà di ballarci sopra.' " />
         </div>
     </main>
   
@@ -14,10 +18,11 @@
 <script>
     import CardComp from './CardComp.vue';
     import axios from 'axios';
+import LoaderComp from './LoaderComp.vue';
 
     export default {
         name: "MainComp",
-        components: { CardComp },
+        components: { CardComp, LoaderComp },
         data(){
             return{
                 apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
