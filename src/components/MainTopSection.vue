@@ -1,28 +1,29 @@
 <template>
 
-    <header>
+    <section>
         <img src="../assets/img/logo-small.svg" alt="spotify logo">   
         
         <select name="" id="">
             <option value="">Seleziona un genere</option>
             <option value="">Rock</option>
+            <option value="">Pop</option>
+            <option value="">Jazz</option>
             <option value="">Metal</option>
-            <option value="">Opera</option>
         </select>
-    </header>
+    </section>
   
 </template>
 
 <script>
 export default {
-    name: 'HeaderComp'
+    name: 'MainTopSection'
 }
 </script>
 
 <style lang="scss" scoped>
     @import '../assets/style/vars';
 
-    header{
+    section{
         height: 60px;
         background-color: $secondary-color;
         display: flex;

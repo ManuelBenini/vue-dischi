@@ -1,16 +1,22 @@
 <template>
 
     <main>
-        <div class="container d-flex flex-wrap" v-if="isApiLoaded">
-            <CardComp :key="`album${index}`" 
-                v-for="(album, index) in albums"
-                :albumData="album"
-            />
-        </div>
+        <MainTopSection />
 
-        <div class="container d-flex flex-wrap" v-else>
-            <LoaderComp loadingMessage=" 'Il rock non eliminerà i tuoi problemi. Ma ti permetterà di ballarci sopra.' " />
-        </div>
+        <section class="main-section">
+
+            <div class="container d-flex flex-wrap" v-if="isApiLoaded">
+                <CardComp :key="`album${index}`" 
+                    v-for="(album, index) in albums"
+                    :albumData="album"
+                />
+            </div>
+    
+            <div class="container d-flex flex-wrap" v-else>
+                <LoaderComp loadingMessage=" 'Il rock non eliminerà i tuoi problemi. Ma ti permetterà di ballarci sopra.' " />
+            </div>
+        </section>
+
     </main>
   
 </template>
@@ -19,10 +25,11 @@
     import CardComp from './CardComp.vue';
     import axios from 'axios';
 import LoaderComp from './LoaderComp.vue';
+import MainTopSection from './MainTopSection.vue';
 
     export default {
         name: "MainComp",
-        components: { CardComp, LoaderComp },
+        components: { CardComp, LoaderComp, MainTopSection },
         data(){
             return{
                 apiUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
@@ -54,9 +61,11 @@ import LoaderComp from './LoaderComp.vue';
     @import '../assets/style/vars';
 
     main{
-        min-height: calc(100vh - 60px);
+        min-height: 100vh;
         background-color: $primary-color;
-        padding-top: 50px;
+        .main-section{
+            padding-top: 60px;
+        }
     }
 
 </style>
